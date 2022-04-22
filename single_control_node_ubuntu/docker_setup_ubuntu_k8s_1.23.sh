@@ -3,7 +3,7 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 
 # Install using the repository
 sudo apt-get update
-sudo apt-get install \
+sudo apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
@@ -16,7 +16,9 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # set the cgroup to systemd requred by kubeadm by default as of Apri 2022 on ubuntu systems
 echo '{ "exec-opts": ["native.cgroupdriver=systemd"] }' > /etc/docker/daemon.json
+
+sudo apt-get autoremove
