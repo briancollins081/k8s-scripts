@@ -9,6 +9,8 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 sudo sysctl --system
 
+sysctl -w net.ipv4.ip_forward=1
+
 # Install kubectl, kubeadm and kublet
 
 sudo apt-get update
